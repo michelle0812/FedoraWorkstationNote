@@ -52,6 +52,10 @@ dnf -y install rp-pppoe ; pppoe-setup ;\
 echo '#!/bin/bash' >> /etc/rc.d/rc.local ;\ <br>
 echo "nohup /root/frp/frpc -c /root/frp/frpc.ini &" >> /etc/rc.d/rc.local ;\ <br>
 echo "aria2c --conf-path=/root/Aria2/Aria2.conf -D" >> /etc/rc.d/rc.local ;\ <br>
+echo "sleep 10 ; /usr/sbin/pppoe-start" >> /etc/rc.d/rc.local ;\ <br>
+echo "sleep 10" >> /etc/rc.d/rc.local ;\ <br>
+echo "/usr/sbin/route add -host 140.114.63.7 gw 192.168.245.254" >> /etc/rc.d/rc.local ;\ <br>
+echo "/usr/sbin/route add -host 140.114.64.29 gw 192.168.245.254" >> /etc/rc.d/rc.local ;\ <br>
 echo "[Install]" >> /lib/systemd/system/rc-local.service ;\ <br>
 echo "WantedBy=multi-user.target" >> /lib/systemd/system/rc-local.service ;\ <br>
 chmod +x /etc/rc.d/rc.local ;\ <br>
