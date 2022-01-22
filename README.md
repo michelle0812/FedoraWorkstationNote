@@ -13,3 +13,11 @@ echo 'alias 29="ssh root@140.114.64.29"' >> /root/.bash_profile ;\ <br>
 echo 'alias ap="ssh adminTW@192.168.245.253"' >> /root/.bash_profile ;\ <br>
 echo '"\e[A": history-search-backward' >> /root/.inputrc ;\ <br>
 echo '"\e[B": history-search-forward' >> /root/.inputrc <br>
+
+dnf -y install tigervnc-server ;\ <br>
+echo ":1=andy" >> /etc/tigervnc/vncserver.users ;\ <br>
+echo "securitytypes=vncauth,tlsvnc" >> /etc/tigervnc/vncserver-config-defaults ;\ <br>
+echo "desktop=MyVNC" >> /etc/tigervnc/vncserver-config-defaults ;\ <br>
+echo "geometry=1680x1050" >> /etc/tigervnc/vncserver-config-defaults ;\ <br>
+echo "alwaysshared" >> /etc/tigervnc/vncserver-config-defaults ;\ <br>
+vncpasswd ;\ <br>
