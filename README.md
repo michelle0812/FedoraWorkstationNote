@@ -22,4 +22,10 @@ echo "geometry=1680x1050" >> /home/andy/.vnc/config ;\ <br>
 chown -R andy:andy /home/andy/.vnc ; sudo - andy ;\ <br>
 vncpasswd ;\ <br>
 <p>
-  
+yum install libreswan xl2tpd -y ;\ <br>
+firewall-cmd --zone=public --add-port=500/udp --permanent ;\ <br>
+firewall-cmd --zone=public --add-port=1701/udp --permanent ;\ <br>
+firewall-cmd --zone=public --add-port=4500/udp --permanent ;\ <br>
+firewall-cmd --zone=public --add-rich-rule 'rule family=ipv4 source address="192.168.253.0/24" accept' --permanent ;\ <br>
+firewall-cmd --zone=public --add-masquerade --permanent ;\ <br>
+reload ;\ <br>
