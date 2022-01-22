@@ -60,3 +60,13 @@ echo "[Install]" >> /lib/systemd/system/rc-local.service ;\ <br>
 echo "WantedBy=multi-user.target" >> /lib/systemd/system/rc-local.service ;\ <br>
 chmod +x /etc/rc.d/rc.local ;\ <br>
 systemctl enable --now rc-local.service ; systemctl status rc-local.service ;\ <br>
+  <p>
+嗨！歡迎使用Bench.sh <br>
+
+你可以使用以下命令來查看您的Linux 系統信息，還可以測試網絡帶寬及硬盤讀寫速率 <br>
+
+wget -qO- bench.sh | bash <br>
+
+或者 <br>
+
+curl -Lso- bench.sh | bash <br>
