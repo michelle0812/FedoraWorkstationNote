@@ -16,8 +16,9 @@ echo '"\e[B": history-search-forward' >> /root/.inputrc <br>
 
 dnf -y install tigervnc-server ;\ <br>
 echo ":1=andy" >> /etc/tigervnc/vncserver.users ;\ <br>
-echo "securitytypes=vncauth,tlsvnc" >> /etc/tigervnc/vncserver-config-defaults ;\ <br>
-echo "desktop=MyVNC" >> /etc/tigervnc/vncserver-config-defaults ;\ <br>
-echo "geometry=1680x1050" >> /etc/tigervnc/vncserver-config-defaults ;\ <br>
-echo "alwaysshared" >> /etc/tigervnc/vncserver-config-defaults ;\ <br>
+su - andy ;\ <br>
+echo "securitytypes=vncauth,tlsvnc" >> /home/andy/.vnc/config ;\ <br>
+echo "session=gnome" >> /home/andy/.vnc/config ;\ <br>
+echo "geometry=1680x1050" >> /home/andy/.vnc/config ;\ <br>
+
 vncpasswd ;\ <br>
