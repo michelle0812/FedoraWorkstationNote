@@ -47,3 +47,12 @@ ipsec verify ;\ <br>
 echo "logfile /var/log/xl2tpd.log" >> /etc/ppp/options.xl2tpd ;\ <br>
 systemctl enable --now xl2tpd ; systemctl status xl2tpd ;\ <br>
 /usr/sbin/xl2tpd -D ;\ for test <br>
+
+dnf -y install rp-pppoe ; pppoe-setup ;\
+echo "#!/bin/bash" >> /etc/rc.d/rc.local ;\ <br>
+echo "nohup /root/frp/frpc -c /root/frp/frpc.ini &" >> /etc/rc.d/rc.local ;\ <br>
+echo "aria2c --conf-path=/root/Aria2/Aria2.conf -D" >> /etc/rc.d/rc.local ;\ <br>
+echo "[Install]" >> /lib/systemd/system/rc-local.service ;\ <br>
+echo "WantedBy=multi-user.target" >> /lib/systemd/system/rc-local.service ;\ <br>
+chmod +x /etc/rc.d/rc.local ;\ <br>
+systemctl enable --now rc-local.service ; systemctl status rc-local.service ;\ <br>
