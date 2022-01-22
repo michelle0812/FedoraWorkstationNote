@@ -16,9 +16,8 @@ echo '"\e[B": history-search-forward' >> /root/.inputrc <br>
 
 dnf -y install tigervnc-server ;\ <br>
 echo ":1=andy" >> /etc/tigervnc/vncserver.users ;\ <br>
-su - andy ;\ <br>
 echo "securitytypes=vncauth,tlsvnc" >> /home/andy/.vnc/config ;\ <br>
 echo "session=gnome" >> /home/andy/.vnc/config ;\ <br>
 echo "geometry=1680x1050" >> /home/andy/.vnc/config ;\ <br>
-
+chown -R andy:andy /home/andy/.vnc ; sudo - andy ;\ <br>
 vncpasswd ;\ <br>
