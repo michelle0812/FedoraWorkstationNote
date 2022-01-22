@@ -23,11 +23,11 @@ chown -R andy:andy /home/andy/.vnc ; sudo - andy ;\ <br>
 vncpasswd ;\ <br>
 <p>
 yum install libreswan xl2tpd -y ;\ <br>
-firewall-cmd --zone=public --add-port=500/udp --permanent ;\ <br>
-firewall-cmd --zone=public --add-port=1701/udp --permanent ;\ <br>
-firewall-cmd --zone=public --add-port=4500/udp --permanent ;\ <br>
-firewall-cmd --zone=public --add-rich-rule 'rule family=ipv4 source address="192.168.253.0/24" accept' --permanent ;\ <br>
-firewall-cmd --zone=public --add-masquerade --permanent ;\ <br>
+firewall-cmd --zone=FedoraWorkstation --add-port=500/udp --permanent ;\ <br>
+firewall-cmd --zone=FedoraWorkstation --add-port=1701/udp --permanent ;\ <br>
+firewall-cmd --zone=FedoraWorkstation --add-port=4500/udp --permanent ;\ <br>
+firewall-cmd --zone=FedoraWorkstation --add-rich-rule 'rule family=ipv4 source address="192.168.253.0/24" accept' --permanent ;\ <br>
+firewall-cmd --zone=FedoraWorkstation --add-masquerade --permanent ;\ <br>
 reload ;\ <br>
 <p>
 cat  ~/.ssh/id_rsa.pub | ssh root@192.168.245.1 "cat - >> ~/.ssh/authorized_keys" ;\ <br>
