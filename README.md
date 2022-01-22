@@ -29,3 +29,21 @@ firewall-cmd --zone=public --add-port=4500/udp --permanent ;\ <br>
 firewall-cmd --zone=public --add-rich-rule 'rule family=ipv4 source address="192.168.253.0/24" accept' --permanent ;\ <br>
 firewall-cmd --zone=public --add-masquerade --permanent ;\ <br>
 reload ;\ <br>
+<p>
+cat  ~/.ssh/id_rsa.pub | ssh root@192.168.245.1 "cat - >> ~/.ssh/authorized_keys" ;\ <br>
+mv /etc/ipsec.conf /etc/ipsec.conf.bsd ;\ <br>
+mv /etc/ipsec.secrets /etc/ipsec.secrets.bsd ;\ <br>
+mv /etc/sysctl.conf /etc/sysctl.conf.bsd ;\ <br>
+mv /etc/xl2tpd/xl2tpd.conf /etc/xl2tpd/xl2tpd.conf.bsd ;\ <br>
+mv /etc/ppp/chap-secrets /etc/ppp/chap-secrets.bsd ;\ <br>
+scp root@192.168.245.1:/etc/ipsec.conf /etc/ ;\ <br>
+scp root@192.168.245.1:/etc/ipsec.secrets /etc/ ;\ <br>
+scp root@192.168.245.1:/etc/sysctl.conf /etc/ ;\ <br>
+scp root@192.168.245.1:/etc/xl2tpd/xl2tpd.conf /etc/xl2tpd ;\ <br>
+scp root@192.168.245.1:/etc/ppp/chap-secrets /etc/ppp ;\ <br>
+sysctl -p ;\ <br>
+systemctl enable --now ipsec ;\ <br>
+ipsec verify ;\ <br>
+echo "logfile /var/log/xl2tpd.log" >> /etc/ppp/options.xl2tpd ;\ <br>
+systemctl enable --now xl2tpd ; systemctl status xl2tpd ;\ <br>
+/usr/sbin/xl2tpd -D ;\ for test <br>
